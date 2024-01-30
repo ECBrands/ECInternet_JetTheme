@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<section id="jet_theme" translate="label" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+			<class>separator-top</class>
+			<label>Jet Theme Settings</label>
+			<tab>ecinternet</tab>
+			<resource>ECInternet_JetTheme::settings</resource>
+			<group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+				<label>General Configuration</label>
+				<field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Enable Module</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="debug_logging" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Enable Debug Logging</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+			</group>
+			<group id="theme" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+				<label>Theme Settings</label>
+				<field id="global_title_background_image" translate="label" type="image" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Global Theme Background Image</label>
+					<!-- Backend model which saves uploaded files on a defined directory path -->
+					<backend_model>ECInternet\JetTheme\Model\Config\Backend\Image</backend_model>
+					<base_url type="media" scope_info="1">ecinternet/jet_theme</base_url>
+					<comment><![CDATA[Allowed file types: 'jpg', 'jpeg', 'gif', 'png']]></comment>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

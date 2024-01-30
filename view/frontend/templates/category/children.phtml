@@ -1,0 +1,49 @@
+<?php /** @var \ECInternet\JetTheme\Block\Category\View $block */ ?>
+<?php /** @var \Magento\Framework\Escaper $escaper */ ?>
+
+<div class="category-home">
+    <div class="category-children">
+        <?php if ($block->isTopLevel()) { ?>
+            <?php if ($children = $block->getAllChildren()) { ?>
+                <h1><?= __('Sub-Categories') ?></h1>
+
+                <div class="row">
+                    <?php foreach ($children as $name => $child) { ?>
+                        <?php $i = 0; ?>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="category-child-item">
+                                <?php $categoryUrl = $block->getCategoryUrl($child); ?>
+
+                                <div class="category-child-item-image-link">
+                                    <a href="<?= $escaper->escapeUrl($categoryUrl) ?>">
+                                        <img src="<?= $escaper->escapeUrl($block->getCategoryThumbnailUrl($child)) ?>"
+                                             width="300px"
+                                             height="300px"
+                                             alt="<?= $escaper->escapeHtmlAttr($child->getName()) ?>"
+                                        />
+                                    </a>
+                                </div>
+
+                                <div class="category-child-item-name">
+                                   <a href="<?= $escaper->escapeUrl($categoryUrl) ?>">
+                                       <?= $escaper->escapeHtml($child->getName()) ?>
+                                   </a>
+                                </div>
+
+                                <div class="category-child-item-link">
+                                    <a class="btn btn-secondary" href="<?= $escaper->escapeUrl($categoryUrl) ?>">
+                                        <?= __('Shop Now') ?>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <?php if (++$i % 3 == 0) { ?>
+                            </div><div class="row">
+                        <?php } ?>
+                    <?php } ?>
+                </div>
+            <?php } ?>
+        <?php } ?>
+    </div>
+</div>
